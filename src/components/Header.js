@@ -15,6 +15,3 @@ const Header = () => (
   );
   
   export default Header;
-
-  /*<Link to={`${props.data}Cost/SuitPage`}>SuitItem</Link>      
-  <Route path={`/${props.data}Cost/SuitPage`} render={() => <SuitPage />}/>*/

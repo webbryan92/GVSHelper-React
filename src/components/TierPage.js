@@ -6,6 +6,7 @@ import { Consumer } from "./Context";
 //use grid-container to set the grid with css
 export class TierPage extends Component {
   render() {
+    const match = this.props.match.params;
     return (
       <Consumer>
         {value => {
@@ -13,8 +14,8 @@ export class TierPage extends Component {
           console.log(message);
           return (
             <div className="grid-container">
-              <h2>I am the {this.props.match.params.cost} Cost tierpage</h2>
-              <SuitListItem cost={this.props.match.params.cost} />
+              <h2>I am the {match.cost} Cost tierpage</h2>
+              <SuitListItem cost={match.cost} />
               <h3>I am the message: {message} </h3>
 
               {contacts.map(contact => (

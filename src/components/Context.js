@@ -11,6 +11,8 @@ export class Provider extends Component {
   async componentDidMount() {
     try {
       //dummy data
+
+      //add a dispatcher to my state and reducer
       const response = await axios.get(
         "https://jsonplaceholder.typicode.com/users"
       );
