@@ -1,12 +1,34 @@
 import React, { Component } from "react";
 
 import SuitListItem from "./SuitListItem";
+import { db } from "../firebase";
 import { Consumer } from "./Context";
 
 //use grid-container to set the grid with css
 export class TierPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      suits: null
+    };
+  }
+
+  componentDidMount() {
+    db.onceGetTier(this.props.match.params.cost).then(snapshot =>
+      this.setState({ suits: snapshot.val() })
+    );
+  }
+
+  componentDidUpdate() {
+    db.onceGetTier(this.props.match.params.cost).then(snapshot =>
+      this.setState({ suits: snapshot.val() })
+    );
+  }
+
   render() {
     const match = this.props.match.params;
+    const suits = this.state.suits;
     return (
       <Consumer>
         {value => {
@@ -15,12 +37,8 @@ export class TierPage extends Component {
           return (
             <div className="grid-container">
               <h2>I am the {match.cost} Cost tierpage</h2>
-              <SuitListItem cost={match.cost} />
-              <h3>I am the message: {message} </h3>
 
-              {contacts.map(contact => (
-                <h3>{contact.name}</h3>
-              ))}
+              {!!suits && <TierList suits={suits} />}
             </div>
           );
         }}
@@ -29,4 +47,21 @@ export class TierPage extends Component {
   }
 }
 
+const TierList = ({ suits }) => (
+  <div>
+    <h2>List of Suits</h2>
+    <p>Imported from Firebase</p>
+    {Object.keys(suits).map(key => (
+      <div key={key}>
+        <SuitListItem suit={suits[key]} />
+        {suits[key].name}
+      </div>
+    ))}
+  </div>
+);
+
 export default TierPage;
+
+/*{contacts.map(contact => (
+  <h3>{contact.name}</h3>
+))}*/
