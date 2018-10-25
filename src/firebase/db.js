@@ -2,10 +2,9 @@ import { db } from "./firebase";
 
 // User API
 
-export const doCreateUser = (id, username, email) =>
+export const doAddNote = (id, note) =>
   db.ref(`users/${id}`).set({
-    username,
-    email
+    note
   });
 
 //get list of suit by tier

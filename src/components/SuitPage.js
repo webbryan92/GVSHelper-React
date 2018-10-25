@@ -31,9 +31,54 @@ const Pilots = ({ pilots }) => (
   </div>
 );
 const Shooting = ({ shooting }) => (
+  <tbody>
+    <tr>
+      <th />
+      <th />
+      <th>Name</th>
+      <th>Ammo</th>
+      <th>Damage</th>
+      <th>Cancels</th>
+    </tr>
+    <div>
+      {Object.keys(shooting).map(key => (
+        <div key={key}>
+          <tr>
+            <th>{shooting[key].type}</th>
+            <td>{shooting[key].name}</td>
+            <td>{shooting[key].ammo}</td>
+            <td>{shooting[key].damage}</td>
+            <td>{shooting[key].cancels}</td>
+          </tr>
+          <tr>
+            <th colspan="2">Cooldown</th>
+            <td>{shooting[key].cooldown}</td>
+            <th>Down Value</th>
+            <td colspan="2">{shooting[key]["down value"]}</td>
+          </tr>
+          <tr>
+            <th colspan="2" align-left>
+              Notes
+            </th>
+            <td>*****</td>
+            <td colspan="3">{shooting[key].notes}</td>
+          </tr>
+        </div>
+      ))}
+    </div>
+  </tbody>
+);
+const Melee = ({ melee }) => (
   <div>
-    {Object.keys(shooting).map(key => (
-      <div key={key}>{shooting[key].name}</div>
+    {Object.keys(melee).map(key => (
+      <div key={key}>{melee[key].name}</div>
+    ))}
+  </div>
+);
+const Special = ({ special }) => (
+  <div>
+    {Object.keys(special).map(key => (
+      <div key={key}>{special[key].name}</div>
     ))}
   </div>
 );
