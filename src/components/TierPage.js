@@ -14,7 +14,7 @@ export class TierPage extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     db.onceGetTier(this.props.match.params.cost).then(snapshot =>
       this.setState({ suits: snapshot.val() })
     );
@@ -29,21 +29,25 @@ export class TierPage extends Component {
   render() {
     const match = this.props.match.params;
     const suits = this.state.suits;
-    return (
-      <Consumer>
-        {value => {
-          const { message, contacts } = value;
-          console.log(message);
-          return (
-            <div className="grid-container">
-              <h2>I am the {match.cost} Cost tierpage</h2>
+    if (suits && suits.length) {
+      return (
+        <Consumer>
+          {value => {
+            const { message, contacts } = value;
+            console.log(message);
+            return (
+              <div className="grid-container">
+                <h2>I am the {match.cost} Cost tierpage</h2>
 
-              {!!suits && <TierList suits={suits} />}
-            </div>
-          );
-        }}
-      </Consumer>
-    );
+                {!!suits && <TierList suits={suits} />}
+              </div>
+            );
+          }}
+        </Consumer>
+      );
+    } else {
+      return <h1>Loading</h1>;
+    }
   }
 }
 

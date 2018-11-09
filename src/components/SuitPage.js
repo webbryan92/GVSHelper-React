@@ -1,23 +1,28 @@
 import React, { Component } from "react";
+import Notes from "./Notes";
+
+import { db } from "../firebase";
 
 //use grid-container to set the grid with css
 export class SuitPage extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const match = this.props.match.params;
-    const pilots = this.props.location.state.pilots;
-    const shooting = this.props.location.state.shooting;
-    const melee = this.props.location.state.melee;
-    const special = this.props.location.state.special;
-
+    const suit = this.props.location.state;
+    const pilots = suit.pilots;
+    const shooting = suit.shooting;
+    const melee = suit.melee;
+    const special = suit.special;
     return (
       <div>
         <h2>I am the suitpage for {match.suitName}</h2>
-
         <h3> Pilots </h3>
         <Pilots pilots={pilots} />
-
         <h3> Ranged Attacks </h3>
         <Shooting shooting={shooting} />
+        <Notes name={suit.name} />
       </div>
     );
   }
