@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { db } from "../firebase";
+//import axios from "axios";
+//import { db } from "../firebase";
 
 const Context = React.createContext();
 

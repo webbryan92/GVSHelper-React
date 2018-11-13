@@ -14,7 +14,7 @@ export class TierPage extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     db.onceGetTier(this.props.match.params.cost).then(snapshot =>
       this.setState({ suits: snapshot.val() })
     );
@@ -33,8 +33,8 @@ export class TierPage extends Component {
       return (
         <Consumer>
           {value => {
-            const { message, contacts } = value;
-            console.log(message);
+            //const { message, contacts } = value;
+            //console.log(message);
             return (
               <div className="grid-container">
                 <h2>I am the {match.cost} Cost tierpage</h2>

@@ -6,6 +6,17 @@ export const doAddNote = (name, note) =>
     note
   });
 
+export const doUpdateNote = (key, note) =>
+  db
+    .ref("Notes/")
+    .child(key)
+    .update({ note: note });
+
+export const removeNote = noteID =>
+  db
+    .ref("Notes/")
+    .child(noteID)
+    .remove();
 //get the notes
 
 export const onceGetNotes = name =>
