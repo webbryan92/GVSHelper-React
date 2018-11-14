@@ -13,7 +13,7 @@ export class TierPage extends Component {
       suits: null
     };
   }
-
+  //import the suitlist on page load/update
   componentDidMount() {
     db.onceGetTier(this.props.match.params.cost).then(snapshot =>
       this.setState({ suits: snapshot.val() })
@@ -33,8 +33,6 @@ export class TierPage extends Component {
       return (
         <Consumer>
           {value => {
-            //const { message, contacts } = value;
-            //console.log(message);
             return (
               <div className="grid-container">
                 <h2>I am the {match.cost} Cost tierpage</h2>
@@ -50,7 +48,8 @@ export class TierPage extends Component {
     }
   }
 }
-
+//Iterate through the list of suits from firebase and create a suit
+//list item for each.
 const TierList = ({ suits }) => (
   <div>
     <h2>List of Suits</h2>

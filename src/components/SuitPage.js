@@ -5,12 +5,16 @@ import Notes from "./Notes";
 //use grid-container to set the grid with css
 export class SuitPage extends Component {
   render() {
+    //grab the properties from the URL
     const match = this.props.match.params;
+    //grab the props from the link that sent the suit data
+    //to this page
     const suit = this.props.location.state;
     const pilots = suit.pilots;
     const shooting = suit.shooting;
     const melee = suit.melee;
     const special = suit.special;
+    //Display the Suit, pilots, and movelist tables and notes
     return (
       <React.Fragment>
         <h1>{match.suitName}</h1>
@@ -25,7 +29,7 @@ export class SuitPage extends Component {
     );
   }
 }
-
+//Import the list of pilots for display
 const Pilots = ({ pilots }) => (
   <React.Fragment>
     {Object.keys(pilots).map(key => (
@@ -33,6 +37,7 @@ const Pilots = ({ pilots }) => (
     ))}
   </React.Fragment>
 );
+//import and format the ranged attack data into a table
 const Shooting = ({ shooting }) => (
   <tbody>
     <tr>
@@ -68,6 +73,7 @@ const Shooting = ({ shooting }) => (
     ))}
   </tbody>
 );
+//TODO: import and format the ranged attack data into a table
 const Melee = ({ melee }) => (
   <tbody>
     {Object.keys(melee).map(key => (
@@ -75,6 +81,7 @@ const Melee = ({ melee }) => (
     ))}
   </tbody>
 );
+//TODO: import and format the ranged attack data into a table
 const Special = ({ special }) => (
   <div>
     {Object.keys(special).map(key => (

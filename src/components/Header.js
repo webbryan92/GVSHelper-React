@@ -1,6 +1,7 @@
 import React from "react";
 import { Nav, Navbar, MenuItem, NavItem, NavDropdown } from "react-bootstrap";
 
+//Navbar controlling the navigation of the site
 const Header = () => (
   <Navbar inverse collapseOnSelect>
     <Navbar.Header>

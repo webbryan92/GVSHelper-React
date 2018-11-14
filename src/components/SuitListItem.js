@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export class SuitListItem extends Component {
   render() {
     const props = this.props;
+    //Creates a link with properties to the individual suit pages
     const newTo = {
       pathname: `/suits/${props.suit.cost}/${props.suit.name}`,
       state: props.suit

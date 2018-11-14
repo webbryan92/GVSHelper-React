@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-//import axios from "axios";
-//import { db } from "../firebase";
 
 const Context = React.createContext();
 
+//Context API class(currently unused at this stage of development)
 export class Provider extends Component {
   state = {
     message: "hi",

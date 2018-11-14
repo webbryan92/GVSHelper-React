@@ -18,7 +18,7 @@ export default class Notes extends Component {
       noteToAdd: ""
     };
   }
-
+  //Create a new note entry in the database
   onSubmit = event => {
     event.preventDefault();
     const { noteToAdd } = this.state;
@@ -30,7 +30,7 @@ export default class Notes extends Component {
       console.log(error);
     }
   };
-
+  //Load the notes from the database on component load or update
   componentWillMount() {
     const name = this.props.name;
     try {
@@ -52,7 +52,7 @@ export default class Notes extends Component {
       this.setState({ notes: null });
     }
   }
-
+  //List the notes if there are any then display a form to add new notes
   render() {
     const isInvalid = this.noteToAdd === null || "";
     return (
@@ -77,16 +77,3 @@ export default class Notes extends Component {
     );
   }
 }
-
-// const NoteList = ({ notes, isEditing }) => (
-//   <div>
-//     {Object.keys(notes).map(key => (
-//       <div key={key}>
-//         <p>{notes[key].note}</p>
-//         <button onClick={() => db.removeNote(key)}>x</button>
-//       </div>
-//     ))}
-//   </div>
-// );
-
-//

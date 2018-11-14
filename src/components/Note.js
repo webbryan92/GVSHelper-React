@@ -16,12 +16,15 @@ export default class Note extends Component {
       noteEdit: ""
     };
   }
+  //toggle the editing state for the update form
   toggleEditing() {
     this.setState({ isEditing: !this.state.isEditing });
   }
+  //add the note content to the edit form
   componentDidMount() {
     this.setState({ noteEdit: this.props.note });
   }
+  //send the update event to the database
   onSubmit = event => {
     event.preventDefault();
     const { noteEdit } = this.state;
@@ -34,6 +37,8 @@ export default class Note extends Component {
       console.log(error);
     }
   };
+  //if not editing display the note with delete and update buttons.
+  //if editing display the update form
   render() {
     return (
       <div>

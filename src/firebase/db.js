@@ -1,5 +1,6 @@
 import { db } from "./firebase";
 
+//CRUD functions for the notes
 export const doAddNote = (name, note) =>
   db.ref("Notes/").push({
     name,
@@ -17,7 +18,6 @@ export const removeNote = noteID =>
     .ref("Notes/")
     .child(noteID)
     .remove();
-//get the notes
 
 export const onceGetNotes = name =>
   db
