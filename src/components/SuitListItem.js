@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //use grid-container to set the grid with css
@@ -11,7 +12,9 @@ export class SuitListItem extends Component {
     };
     return (
       <div>
-        <Link to={newTo}>I am the Suititem</Link>
+        <Link to={newTo}>
+          <Button>{props.suit.name}</Button>
+        </Link>
       </div>
     );
   }

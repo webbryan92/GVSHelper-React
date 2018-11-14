@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Table } from "react-bootstrap";
 import Notes from "./Notes";
 
 //use grid-container to set the grid with css
@@ -12,13 +13,13 @@ export class SuitPage extends Component {
     const special = suit.special;
     return (
       <React.Fragment>
-        <h2>I am the suitpage for {match.suitName}</h2>
+        <h1>{match.suitName}</h1>
         <h3> Pilots </h3>
         <Pilots pilots={pilots} />
         <h3> Ranged Attacks </h3>
-        <table>
+        <Table striped="true" bordered="true" responsive="true">
           <Shooting shooting={shooting} />
-        </table>
+        </Table>
         <Notes name={suit.name} />
       </React.Fragment>
     );
@@ -68,11 +69,11 @@ const Shooting = ({ shooting }) => (
   </tbody>
 );
 const Melee = ({ melee }) => (
-  <div>
+  <tbody>
     {Object.keys(melee).map(key => (
       <div key={key}>{melee[key].name}</div>
     ))}
-  </div>
+  </tbody>
 );
 const Special = ({ special }) => (
   <div>

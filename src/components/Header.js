@@ -1,17 +1,36 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { Nav, Navbar, MenuItem, NavItem, NavDropdown } from "react-bootstrap";
 
 const Header = () => (
-    <header>
-      <span className="icn-logo"><i className="material-icons">gvshelper</i></span>
-      <ul className="main-nav">
-        <li><NavLink exact to="/" activeStyle={{ background: 'tomato' }}>Terms</NavLink></li>
-        <li><NavLink to="/suits/500" activeStyle={{ background: 'tomato' }}>500</NavLink></li>
-        <li><NavLink to="/suits/400" activeStyle={{ background: 'tomato' }}>400</NavLink></li>
-        <li><NavLink to="/suits/300" activeStyle={{ background: 'tomato' }}>300</NavLink></li>
-        <li><NavLink to="/suits/200" activeStyle={{ background: 'tomato' }}>200</NavLink></li>
-      </ul>     
-    </header>
-  );
-  
-  export default Header;
+  <Navbar inverse collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href="/">GVSHelper</a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+        <NavItem eventKey={1} href="#">
+          Terms
+        </NavItem>
+        <NavDropdown eventKey={2} title="Suits" id="basic-nav-dropdown">
+          <MenuItem eventKey={2.4} href="/suits/500">
+            500
+          </MenuItem>
+          <MenuItem eventKey={2.1} href="/suits/400">
+            400
+          </MenuItem>
+          <MenuItem eventKey={2.2} href="/suits/300">
+            300
+          </MenuItem>
+          <MenuItem eventKey={2.3} href="/suits/200">
+            200
+          </MenuItem>
+        </NavDropdown>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
+);
+
+export default Header;

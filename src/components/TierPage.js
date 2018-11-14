@@ -54,18 +54,12 @@ export class TierPage extends Component {
 const TierList = ({ suits }) => (
   <div>
     <h2>List of Suits</h2>
-    <p>Imported from Firebase</p>
     {Object.keys(suits).map(key => (
       <div key={key}>
         <SuitListItem suit={suits[key]} />
-        {suits[key].name}
       </div>
     ))}
   </div>
 );
 
 export default TierPage;
-
-/*{contacts.map(contact => (
-  <h3>{contact.name}</h3>
-))}*/

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, FormControl } from "react-bootstrap";
 
 import NoteList from "./NoteList";
 
@@ -60,7 +61,7 @@ export default class Notes extends Component {
         {this.state.notes != null && <NoteList notes={this.state.notes} />}
 
         <form onSubmit={this.onSubmit}>
-          <input
+          <FormControl
             value={this.state.noteToAdd}
             onChange={event =>
               this.setState(byPropKey("noteToAdd", event.target.value))
@@ -68,9 +69,9 @@ export default class Notes extends Component {
             type="text"
             placeholder="Insert Notes Here"
           />
-          <button disabled={isInvalid} type="submit">
+          <Button disabled={isInvalid} type="submit">
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );

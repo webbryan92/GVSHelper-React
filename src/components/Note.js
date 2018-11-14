@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, FormControl, Button } from "react-bootstrap";
 
 import { db } from "../firebase";
 
@@ -11,10 +12,13 @@ export default class Note extends Component {
     super(props);
 
     this.state = {
+      isEditing: false,
       noteEdit: ""
     };
   }
-
+  toggleEditing() {
+    this.setState({ isEditing: !this.state.isEditing });
+  }
   componentDidMount() {
     this.setState({ noteEdit: this.props.note });
   }
@@ -25,7 +29,7 @@ export default class Note extends Component {
     try {
       db.doUpdateNote(this.props.keyID, noteEdit);
       this.setState({ noteEdit: "" });
-      this.props.toggleEdit();
+      this.toggleEditing();
     } catch (error) {
       console.log(error);
     }
@@ -33,17 +37,27 @@ export default class Note extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
-          <input
-            value={this.state.noteEdit}
-            onChange={event =>
-              this.setState(byPropKey("noteEdit", event.target.value))
-            }
-            type="text"
-            placeholder={this.props.note}
-          />
-          <button type="submit">Update</button>
-        </form>
+        {this.state.isEditing ? (
+          <form onSubmit={this.onSubmit}>
+            <FormControl
+              value={this.state.noteEdit}
+              onChange={event =>
+                this.setState(byPropKey("noteEdit", event.target.value))
+              }
+              type="text"
+              placeholder={this.props.note}
+            />
+            <Button type="submit">Update</Button>
+          </form>
+        ) : (
+          <React.Fragment>
+            <p>{this.props.note}</p>
+            <Button onClick={() => db.removeNote(this.props.keyID)}>
+              Delete
+            </Button>
+            <Button onClick={() => this.toggleEditing()}>Update</Button>
+          </React.Fragment>
+        )}
       </div>
     );
   }
