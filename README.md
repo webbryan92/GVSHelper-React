@@ -2,4 +2,6 @@ This Project is a recreation of another app I've done in Ionic/Angular.  I've ad
 
 1. Clone the project and run npm install.
 
-2. Use npm start to run the project.
+2. Download firebase.js from https://drive.google.com/open?id=1d2UOHnODNUp5cJhdbxpys4NW_o1fMY8X and place it in the src/firebase folder(this holds the firebase config information that would get scraped from github by bots)
+
+3. Use npm start to run the project.
