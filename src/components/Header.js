@@ -12,7 +12,7 @@ const Header = () => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <NavItem eventKey={1} href="#">
+        <NavItem eventKey={1} href="/Terms">
           Terms
         </NavItem>
         <NavDropdown eventKey={2} title="Suits" id="basic-nav-dropdown">
